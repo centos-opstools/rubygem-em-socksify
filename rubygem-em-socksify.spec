@@ -11,11 +11,12 @@ Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Source1: MIT-LICENSE
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
-BuildArch: noarch
-%if 0%{?fc19} || 0%{?fc20}
-Requires: ruby(release)
-Requires: rubygems
+
 Requires: rubygem(eventmachine) >= 1.0.0.beta.4
+
+BuildArch: noarch
+
+%if 0%{?rhel} > 0
 Provides: rubygem(%{gem_name}) = %{version}
 %endif
 
@@ -73,6 +74,9 @@ cp -p %{SOURCE1} %{buildroot}/%{gem_instdir}/
 %{gem_instdir}/em-socksify.gemspec
 
 %changelog
+* Mon Jan 02 2017 Martin Mágr <mmagr@redhat.com> - 0.3.0-11
+- Fixed provides
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.0-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
