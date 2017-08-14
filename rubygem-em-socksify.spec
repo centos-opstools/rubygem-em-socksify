@@ -1,8 +1,8 @@
 %global gem_name em-socksify
 
 Name: rubygem-%{gem_name}
-Version: 0.3.0
-Release: 10%{?dist}
+Version: 0.3.1
+Release: 1%{?dist}
 Summary: Transparent proxy support for any EventMachine protocol
 Group: Development/Languages
 License: MIT
@@ -75,6 +75,7 @@ cp -p %{SOURCE1} %{buildroot}/%{gem_instdir}/
 
 %changelog
 * Mon Jan 02 2017 Martin Mágr <mmagr@redhat.com> - 0.3.0-11
+- Updated to latest upstream version
 - Fixed provides
 
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.0-10
