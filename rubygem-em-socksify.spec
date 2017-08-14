@@ -1,7 +1,7 @@
 %global gem_name em-socksify
 
 Name: rubygem-%{gem_name}
-Version: 0.3.1
+Version: XXX
 Release: 1%{?dist}
 Summary: Transparent proxy support for any EventMachine protocol
 Group: Development/Languages
@@ -12,7 +12,7 @@ Source1: MIT-LICENSE
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
 
-Requires: rubygem(eventmachine) >= 1.0.0.beta.4
+Requires: rubygem(eventmachine)
 
 BuildArch: noarch
 
@@ -35,14 +35,18 @@ Documentation for %{name}
 
 %prep
 gem unpack %{SOURCE0}
-
+%if 0%{?dlrn} > 0
+%setup -q -D -T -n  %{dlrn_nvr}
+%else
 %setup -q -D -T -n  %{gem_name}-%{version}
+%endif
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
+
 
 %build
 gem build %{gem_name}.gemspec
-
 %gem_install
+
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
@@ -51,7 +55,7 @@ cp -pa .%{gem_dir}/* \
 cp -p %{SOURCE1} %{buildroot}/%{gem_instdir}/
 
 #Spec suite only includes 2 tests that require external connections,
-#commented out since this isn't possible within mock
+#commented out since this isn't possible on build server
 #%%check
 #pushd ./%%{gem_instdir}
 #rspec -Ilib spec
@@ -74,37 +78,3 @@ cp -p %{SOURCE1} %{buildroot}/%{gem_instdir}/
 %{gem_instdir}/em-socksify.gemspec
 
 %changelog
-* Mon Jan 02 2017 Martin Mágr <mmagr@redhat.com> - 0.3.0-11
-- Updated to latest upstream version
-- Fixed provides
-
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.0-10
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.0-9
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-
-* Wed May 28 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-8
-- Added conditional for F19/F20 and marked readme as doc
-
-* Fri Mar 28 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-7
-- Fixing licensing issues
-
-* Tue Mar 25 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-6
-- Updating licensing  & other issues so as to comply with Fedora guidelines
-
-* Sat Mar 15 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-5
-- Correcting missing requirements & updating as per the Fedora guidelines
-
-* Sat Mar 15 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-4
-- Updated to comply with Fedora guidelines
-
-* Thu Mar 6 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org> - 0.3.0-3
-- Updated as per the Fedora usage guidelines
-
-* Sat Feb 22 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org>  0.3.0-2
-- Updated as per the comments
-
-* Sat Jan 11 2014 Nitesh Narayan Lal <niteshnarayan@fedoraproject.org>  0.3.0-1
-- Initial package
