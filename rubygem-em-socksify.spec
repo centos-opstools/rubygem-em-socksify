@@ -1,8 +1,8 @@
 %global gem_name em-socksify
 
 Name: rubygem-%{gem_name}
-Version: 0.3.0
-Release: 10%{?dist}
+Version: 0.3.1
+Release: 2%{?dist}
 Summary: Transparent proxy support for any EventMachine protocol
 Group: Development/Languages
 License: MIT
@@ -74,6 +74,9 @@ cp -p %{SOURCE1} %{buildroot}/%{gem_instdir}/
 %{gem_instdir}/em-socksify.gemspec
 
 %changelog
+* Wed Aug 30 2017 Matthias Runge <mrunge@redhat.com> - 0.3.1-2
+- update to 0.3.1
+
 * Mon Jan 02 2017 Martin Mágr <mmagr@redhat.com> - 0.3.0-11
 - Fixed provides
 
