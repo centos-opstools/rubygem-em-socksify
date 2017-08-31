@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_9fc73945",
+        "filename": "rubygem-em-socksify.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 314
+      },
+      "writtenOn": "2017-08-31T09:07:51Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t we start with 1? :)",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "99ca5e1e7ffb7946ffc738b1ef074c2eb211aeea",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
